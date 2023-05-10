@@ -2,12 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:testing/Pages/stomach_pain.dart';
 import 'package:testing/firebase_options.dart';
+import 'package:testing/physiotherapy_pages/Leg_pain.dart';
+import 'package:testing/physiotherapy_pages/Shoulder_pain.dart';
+import 'package:testing/physiotherapy_pages/backpain.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,);
-    runApp(MyApp());
-  }
+    options: DefaultFirebaseOptions.currentPlatform,);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -16,9 +19,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-home: stomach_pain(),
+     // home: stomach_pain(),
+      home: backpain(),
     );
   }
 }
-
-
