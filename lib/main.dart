@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:testing/Pages/stomach_pain.dart';
 import 'package:testing/firebase_options.dart';
+import 'package:testing/physiotherapy_pages/Knee_pain.dart';
 import 'package:testing/physiotherapy_pages/Leg_pain.dart';
 import 'package:testing/physiotherapy_pages/Shoulder_pain.dart';
 import 'package:testing/physiotherapy_pages/backpain.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
      // home: stomach_pain(),
-      home: backpain(),
+     // home: backpain(),
+      home:  Knee_pain(),
     );
   }
 }

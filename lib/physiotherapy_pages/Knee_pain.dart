@@ -3,7 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../firestore/const.dart';
-
+final physiotherapyref =FirebaseFirestore.instance.collection('physiotherapy');
+DocumentReference physiotherapyDocument = physiotherapyref.doc('Kneepain');
 class Knee_pain extends StatefulWidget {
 
   @override
@@ -11,24 +12,27 @@ class Knee_pain extends StatefulWidget {
 }
 
 class _Knee_paibState extends State<Knee_pain> {
-  List physiotherapy=[];
+  //List physiotherapy=[];
+  //DocumentReference physiotherapyref = FirebaseFirestore.instance.collection(Kphysiotherapy).doc('backpain');
 
-  CollectionReference physiotherapyref=FirebaseFirestore.instance.collection(Kphysiotherapy);
-  getData() async {
-    var responsebody = await physiotherapyref.get();
-    responsebody.docs.forEach((element) {
-      setState(() {
-        physiotherapy.add(element.data());
-      });
-
-    });
-
-  }
   @override
   void initState() {
-    getData();
+    getphysiotherapybyId();
     super.initState();
   }
+  getphysiotherapybyId() async{
+  final DocumentSnapshot doc=  await physiotherapyref.doc('Kneepain').get();
+  if (doc.exists) {
+    Object? data = doc.data();
+    print('Document data: $data');
+  } else {
+    print('Document does not exist');
+  }
+       print(doc.data) ;
+       print(doc.id);
+       print(doc.exists);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,16 +50,9 @@ class _Knee_paibState extends State<Knee_pain> {
         elevation: 0.00,
         backgroundColor: Colors.cyan,
       ),
-      body:  physiotherapy.isEmpty || physiotherapy ==null ? Text('Loading Page .....'):
-      ListView.builder(
-          itemCount:physiotherapy.length,
-          itemBuilder:(context,i){
-            return
-              Text("${ physiotherapy[0]['knee']}");
+      body: //physiotherapy.isEmpty ||physiotherapy ==null ? Text('Loading Page'):
 
-          }),
-
-
+Text('loading'),
 
 
     );
